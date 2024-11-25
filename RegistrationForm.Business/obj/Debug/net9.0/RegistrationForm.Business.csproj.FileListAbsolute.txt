@@ -1,0 +1,15 @@
+D:\Tasks\06-11-2024\RegistrationForm.Business\bin\Debug\net9.0\RegistrationForm.Business.deps.json
+D:\Tasks\06-11-2024\RegistrationForm.Business\bin\Debug\net9.0\RegistrationForm.Business.dll
+D:\Tasks\06-11-2024\RegistrationForm.Business\bin\Debug\net9.0\RegistrationForm.Business.pdb
+D:\Tasks\06-11-2024\RegistrationForm.Business\bin\Debug\net9.0\RegistrationForm.Data.dll
+D:\Tasks\06-11-2024\RegistrationForm.Business\bin\Debug\net9.0\RegistrationForm.Data.pdb
+D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\RegistrationForm.Business.csproj.AssemblyReference.cache
+D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\RegistrationForm.Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\RegistrationForm.Business.AssemblyInfoInputs.cache
+D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\RegistrationForm.Business.AssemblyInfo.cs
+D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\RegistrationForm.Business.csproj.CoreCompileInputs.cache
+D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\Registra.5D6C4F66.Up2Date
+D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\RegistrationForm.Business.dll
+D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\refint\RegistrationForm.Business.dll
+D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\RegistrationForm.Business.pdb
+D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\ref\RegistrationForm.Business.dll

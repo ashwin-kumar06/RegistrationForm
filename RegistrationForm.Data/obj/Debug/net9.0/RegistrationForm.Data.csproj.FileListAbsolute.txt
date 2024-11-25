@@ -1,0 +1,14 @@
+D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\RegistrationForm.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\RegistrationForm.Data.AssemblyInfoInputs.cache
+D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\RegistrationForm.Data.AssemblyInfo.cs
+D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\RegistrationForm.Data.csproj.CoreCompileInputs.cache
+D:\Tasks\06-11-2024\RegistrationForm.Data\bin\Debug\net9.0\RegistrationForm.Data.deps.json
+D:\Tasks\06-11-2024\RegistrationForm.Data\bin\Debug\net9.0\RegistrationForm.Data.runtimeconfig.json
+D:\Tasks\06-11-2024\RegistrationForm.Data\bin\Debug\net9.0\RegistrationForm.Data.dll
+D:\Tasks\06-11-2024\RegistrationForm.Data\bin\Debug\net9.0\RegistrationForm.Data.pdb
+D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\RegistrationForm.Data.csproj.AssemblyReference.cache
+D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\RegistrationForm.Data.dll
+D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\refint\RegistrationForm.Data.dll
+D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\RegistrationForm.Data.pdb
+D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\RegistrationForm.Data.genruntimeconfig.cache
+D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\ref\RegistrationForm.Data.dll
