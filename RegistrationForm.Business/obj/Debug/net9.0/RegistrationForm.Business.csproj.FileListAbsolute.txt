@@ -13,3 +13,4 @@ D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\RegistrationForm.
 D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\refint\RegistrationForm.Business.dll
 D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\RegistrationForm.Business.pdb
 D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\ref\RegistrationForm.Business.dll
+D:\Tasks\06-11-2024\RegistrationForm.Business\obj\Debug\net9.0\RegistrationForm.Business.sourcelink.json

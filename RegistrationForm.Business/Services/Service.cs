@@ -46,11 +46,10 @@ namespace RegistrationForm.Business.Services
             LastName = user.LastName,
             PhoneNumber = user.PhoneNumber,
             DateOfBirth = user.DateOfBirth,
-            Gender = user.Gender,
+            Gender = user.Gender, 
         };
     }
 
-    
 
     public async Task<bool> LoginUserAsync(LoginViewModel model){
         return await _userRepository.LoginUserAsync(model.Email, model.Password);
@@ -104,27 +103,29 @@ namespace RegistrationForm.Business.Services
         };
 
         await _userRepository.AddUserAsync(user);
-        await _userRepository.SaveChangesAsync();
+        //await _userRepository.SaveChangesAsync();
         return true;
     }
 
     public async Task<bool> EditUserAsync(int id, RegistrationViewModel model)
     {
-        var user = await _userRepository.GetUserByIdAsync(id);
-        if (user == null) return false;
-
-        user.FirstName = model.FirstName;
-        user.LastName = model.LastName;
-        user.PhoneNumber = model.PhoneNumber;
-        user.DateOfBirth = model.DateOfBirth;
-        user.Address.StreetAddress = model.StreetAddress;
-        user.Address.City = model.City;
-        user.Address.State = model.State;
-        user.Address.Country = model.Country;
-        user.Address.PostalCode = model.PostalCode;
-
-        await _userRepository.SaveChangesAsync();
-        return true;
+        var user = new UserDetail
+        {
+            FirstName = model.FirstName,
+            LastName = model.LastName,
+            PhoneNumber = model.PhoneNumber,
+            DateOfBirth = model.DateOfBirth,
+            Gender = model.Gender,
+            Address = new UserAddress
+            {
+                StreetAddress = model.StreetAddress,
+                City = model.City,
+                State = model.State,
+                Country = model.Country,
+                PostalCode = model.PostalCode
+            }
+        };
+        return await _userRepository.UpdateUserAsync(id, user);
     }
 
     public async Task<bool> DeleteUserAsync(int id)
@@ -133,7 +134,7 @@ namespace RegistrationForm.Business.Services
         if (user == null) return false;
 
         await _userRepository.DeleteUserAsync(user);
-        await _userRepository.SaveChangesAsync();
+        //await _userRepository.SaveChangesAsync();
         return true;
     }
 

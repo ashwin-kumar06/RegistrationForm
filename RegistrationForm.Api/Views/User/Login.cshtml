@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-body">
                     <form asp-action="Login" method="post">
-
+                        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label asp-for="Email" class="form-label"></label>

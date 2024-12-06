@@ -12,3 +12,4 @@ D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\refint\RegistrationFo
 D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\RegistrationForm.Data.pdb
 D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\RegistrationForm.Data.genruntimeconfig.cache
 D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\ref\RegistrationForm.Data.dll
+D:\Tasks\06-11-2024\RegistrationForm.Data\obj\Debug\net9.0\RegistrationForm.Data.sourcelink.json

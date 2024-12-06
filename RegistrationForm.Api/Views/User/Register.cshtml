@@ -1,17 +1,18 @@
 @model RegistrationForm.Business.ViewModels.RegistrationViewModel
+
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Register New User";
 }
 
 <div class="container py-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
                     <h3 class="card-title mb-0">Register New User</h3>
                 </div>
                 <div class="card-body">
-                    <form asp-action="Register" method="post">
+                    <form id="registerForm">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label asp-for="FirstName" class="form-label">First Name</label>
@@ -28,13 +29,14 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label asp-for="Email" class="form-label"></label>
+                                <label asp-for="Email" class="form-label">Email</label>
                                 <input asp-for="Email" class="form-control" />
                                 <span asp-validation-for="Email" class="text-danger"></span>
+                                <small id="emailExistsError" class="text-danger"></small>
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label asp-for="Password" class="form-label"></label>
+                                <label asp-for="Password" class="form-label">Password</label>
                                 <input asp-for="Password" class="form-control" type="password" />
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
@@ -55,7 +57,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Gender" class="form-label"></label>
+                            <label asp-for="Gender" class="form-label">Gender</label>
                             <select asp-for="Gender" class="form-select">
                                 <option value="">Select Gender</option>
                                 <option value="Male">Male</option>
@@ -73,13 +75,13 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label asp-for="City" class="form-label"></label>
+                                <label asp-for="City" class="form-label">City</label>
                                 <input asp-for="City" class="form-control" />
                                 <span asp-validation-for="City" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label asp-for="State" class="form-label"></label>
+                                <label asp-for="State" class="form-label">State</label>
                                 <input asp-for="State" class="form-control" />
                                 <span asp-validation-for="State" class="text-danger"></span>
                             </div>
@@ -87,7 +89,7 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label asp-for="Country" class="form-label"></label>
+                                <label asp-for="Country" class="form-label">Country</label>
                                 <input asp-for="Country" class="form-control" />
                                 <span asp-validation-for="Country" class="text-danger"></span>
                             </div>
@@ -99,12 +101,15 @@
                             </div>
                         </div>
 
+                        <div class="alert alert-danger d-none" id="errorContainer">
+                            <p id="errorMessage"></p>
+                        </div>
+
                         <div class="d-md-flex justify-content-md-end">
                             <div>
                                 <a asp-action="Index" class="btn btn-secondary me-md-2">Cancel</a>
-                                <button type="submit" class="btn btn-primary">Register</button>
+                                <button type="submit" class="btn btn-primary" id="submitBtn">Register</button>
                             </div>
-
                         </div>
                     </form>
                 </div>
@@ -112,3 +117,128 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+
+            // Use jQuery Validate plugin with unobtrusive validation
+            $("#registerForm").validate({
+                errorClass: "text-danger",
+                errorElement: "span",
+                highlight: function (element) {
+                    $(element).addClass("is-invalid");
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass("is-invalid");
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                },
+                rules: {
+                    FirstName: {
+                        required: true,
+                        minlength: 2
+                    },
+                    LastName: {
+                        required: true,
+                        minlength: 2
+                    },
+                    Email: {
+                        required: true,
+                        email: true
+                    },
+                    Password: {
+                        required: true,
+                        minlength: 6
+                    },
+                    PhoneNumber: {
+                        required: true,
+                        digits: true,
+                        minlength: 10,
+                        maxlength: 15
+                    },
+                    DateOfBirth: {
+                        required: true,
+                        date: true
+                    },
+                    Gender: "required",
+                    StreetAddress: "required",
+                    City: "required",
+                    State: "required",
+                    Country: "required",
+                    PostalCode: "required"
+                },
+                messages: {
+                    FirstName: {
+                        required: "Please enter your first name",
+                        minlength: "First name must be at least 2 characters long"
+                    },
+                    LastName: {
+                        required: "Please enter your last name",
+                        minlength: "Last name must be at least 2 characters long"
+                    },
+                    Email: {
+                        required: "Please enter your email",
+                        email: "Please enter a valid email address"
+                    },
+                    Password: {
+                        required: "Please enter a password",
+                        minlength: "Password must be at least 6 characters long"
+                    },
+                    Gender: "Please select a gender"
+                },
+                submitHandler: function (form, event) {
+                    event.preventDefault();
+
+                    // Disable submit button to prevent multiple submissions
+                    var $submitBtn = $('#submitBtn');
+                    $submitBtn.prop('disabled', true);
+                    $('#errorContainer').addClass('d-none');
+
+                    $.ajax({
+                        url: '@Url.Action("Register", "User")',
+                        type: 'POST',
+                        data: $(form).serialize(),
+                        success: function (response) {
+                            // Redirect to user index or dashboard
+                            window.location.href = '@Url.Action("Index", "User")';
+                        },
+                        error: function (xhr) {
+                            // Show error message
+                            $('#errorMessage').text(xhr.responseJSON?.error || 'Registration failed');
+                            $('#errorContainer').removeClass('d-none');
+
+                            // Re-enable submit button
+                            $submitBtn.prop('disabled', false);
+                        }
+                    });
+                }
+            });
+
+            // Email existence check
+            $('#Email').on('blur', function () {
+                var email = $(this).val();
+                var $submitBtn = $('#submitBtn');
+
+                if (email) {
+                    $.ajax({
+                        url: '@Url.Action("CheckEmailExists", "User")',
+                        type: 'GET',
+                        data: { email: email },
+                        success: function (response) {
+                            if (response) {
+                                $('#emailExistsError').text('Email already exists');
+                                $submitBtn.prop('disabled', true);
+                            } else {
+                                $('#emailExistsError').text('');
+                                $submitBtn.prop('disabled', false);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

@@ -16,13 +16,15 @@ namespace RegistrationForm.Business.Services
         _configuration = configuration;
     }
 
-    public string GenerateJwtToken(UserDetail user)
+
+
+    public string GenerateJwtToken(UserDetail user, string? email)
     {
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-            //new Claim(ClaimTypes.Email, user.Credential.Email),
-            new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}")
+            new Claim(ClaimTypes.Email, email),
+            new Claim(ClaimTypes.Role,"Student")
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

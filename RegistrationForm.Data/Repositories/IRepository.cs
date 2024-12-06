@@ -11,6 +11,7 @@ namespace RegistrationForm.Data.Repositories
         Task AddUserAsync(UserDetail user);
         Task DeleteUserAsync(UserDetail user);
         Task<bool> EmailExistsAsync(string email);
-        Task SaveChangesAsync();
+        Task<bool> UpdateUserAsync(int id, UserDetail user);
+        //Task SaveChangesAsync();
     }
 }

@@ -17,8 +17,9 @@ namespace RegistrationForm.Api.Controllers
             _authService = authService;
         }
 
-        public IActionResult Login()
+        public IActionResult Login(string? returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -44,7 +45,6 @@ namespace RegistrationForm.Api.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             Response.Cookies.Delete("JWTToken", new CookieOptions
@@ -54,15 +54,11 @@ namespace RegistrationForm.Api.Controllers
                 SameSite = SameSiteMode.Strict
             });
 
-            //HttpContext.Session.Clear();
-
-            //await HttpContext.SignOutAsync(JwtBearerDefaults.AuthenticationScheme);
-
             return RedirectToAction("Login");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -76,7 +72,7 @@ namespace RegistrationForm.Api.Controllers
                     return RedirectToAction("Register");
                 }
 
-                var token = _authService.GenerateJwtToken(user);
+                var token = _authService.GenerateJwtToken(user, model.Email);
 
                 if (token != null)
                 {
@@ -92,12 +88,16 @@ namespace RegistrationForm.Api.Controllers
                 {
                     HttpContext.Session.SetString("JWTToken", token);
                 }
+
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
+
                 return RedirectToAction("Index");
             }
 
             return RedirectToAction("Login");
-
-
         }
 
         [HttpPost]
@@ -115,12 +115,10 @@ namespace RegistrationForm.Api.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-                return NotFound();
+            // if (id == null)
+            //     return NotFound();
 
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-            Console.WriteLine(userId, id.ToString());
 
             if (userId != id.ToString())
             {
@@ -152,16 +150,14 @@ namespace RegistrationForm.Api.Controllers
 
         [HttpPost]
         [Authorize]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, RegistrationViewModel model)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
+            // if (id == null)
+            // {
+            //     return RedirectToAction("Index");
+            // }
 
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            Console.WriteLine(userId, id.ToString());
             if (userId != id.ToString())
                 return Forbid();
 

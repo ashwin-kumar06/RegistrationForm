@@ -5,20 +5,24 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
-    <PackageReference Include="bootstrap" Version="5.3.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6"/>
+    <PackageReference Include="bootstrap" Version="5.3.3"/>
+    <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.25"/>
+    <PackageReference Include="System.Drawing.Common" Version="9.0.0"/>
+    <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.WebForms" Version="150.1652.0"/>
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.0"/>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RegistrationForm.Business\RegistrationForm.Business.csproj" />
+    <ProjectReference Include="..\RegistrationForm.Business\RegistrationForm.Business.csproj"/>
   </ItemGroup>
 </Project>
